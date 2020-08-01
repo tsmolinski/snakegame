@@ -23,7 +23,6 @@ void Game::initFruits()
 
 void Game::initTail()
 {
-	nTail = 0;
 	spawn_tail = false;
 }
 
@@ -155,11 +154,6 @@ void Game::updateFruits()
 						grid * (rand() % static_cast<int>(window->getSize().y / grid))));
 		spawn_fruit = false;
 	}
-
-	//for (auto* fruit : fruits)
-	//{
-	//	fruit->update();
-	//}
 }
 
 // spawn snake's tail
@@ -177,7 +171,6 @@ void Game::updateTail()
 					   player->getPos().y));
 
 		std::cout << "tail.size(): " << tail.size() << "\n";
-		std::cout << "nTail: " << nTail << "\n";
 		spawn_tail = false;
 	}
 
@@ -194,11 +187,6 @@ void Game::updateTail()
 			prevX = prev2X;
 			prevY = prev2Y;
 		}
-
-	//for (auto* t : tail)
-	//{
-	//	t->update();
-	//}
 }
 
 void Game::updateEatFruits()
@@ -207,7 +195,6 @@ void Game::updateEatFruits()
 	{
 		if (player->getBounds().intersects(fruits[i]->getBounds()))
 		{
-			nTail++;
 			spawn_tail = true;
 			fruits.erase(fruits.begin() + i);
 			spawn_fruit = true;

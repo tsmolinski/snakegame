@@ -15,8 +15,6 @@ Tail::Tail(float pos_x, float pos_y)
 	grid = 20.f;
 
 	initShape();
-
-	//shape.setPosition(pos_x, pos_y);
 }
 
 Tail::~Tail()

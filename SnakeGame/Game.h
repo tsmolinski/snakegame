@@ -22,7 +22,6 @@ class Game
 	Player* player;
 
 	//tail
-	int nTail;
 	bool spawn_tail;
 	std::deque<Tail*> tail;
 
