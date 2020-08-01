@@ -17,6 +17,9 @@ class Game
 
 	enum direction {UP, DOWN, LEFT, RIGHT};
 	direction dir;
+
+	// systems
+	int points;
 	
 	// player - snake
 	Player* player;
@@ -35,6 +38,7 @@ class Game
 	void initPlayer();
 	void initFruits();
 	void initTail();
+	void initSystems();
 
 public:
 	Game();

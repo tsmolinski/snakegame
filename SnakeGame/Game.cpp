@@ -26,6 +26,11 @@ void Game::initTail()
 	spawn_tail = false;
 }
 
+void Game::initSystems()
+{
+	points = 0;
+}
+
 // constructor/destructor
 Game::Game()
 {
@@ -195,6 +200,7 @@ void Game::updateEatFruits()
 	{
 		if (player->getBounds().intersects(fruits[i]->getBounds()))
 		{
+			points += fruits[i]->getPoints();
 			spawn_tail = true;
 			fruits.erase(fruits.begin() + i);
 			spawn_fruit = true;

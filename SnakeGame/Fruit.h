@@ -19,6 +19,7 @@ public:
 
 	// accessors
 	const FloatRect getBounds() const;
+	const int& getPoints() const;
 
 	// functions
 	void update();

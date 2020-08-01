@@ -30,6 +30,11 @@ const FloatRect Fruit::getBounds() const
 	return shape.getGlobalBounds();
 }
 
+const int& Fruit::getPoints() const
+{
+	return points;
+}
+
 // functions
 void Fruit::update()
 {
