@@ -26,6 +26,23 @@ void Game::initTail()
 	spawn_tail = false;
 }
 
+void Game::initGUI()
+{
+	// load font
+
+	if (!font.loadFromFile("Fonts/PixellettersFull.ttf"))
+	{
+		std::cout << "ERROR::GAME::Failed to load font pixellettersfull" << "\n";
+	}
+
+	// init point text
+	pointText.setPosition(650.f, 25.f);
+	pointText.setFont(font);
+	pointText.setCharacterSize(30);
+	pointText.setFillColor(Color::White);
+	pointText.setString("test");
+}
+
 void Game::initSystems()
 {
 	points = 0;
@@ -37,6 +54,9 @@ Game::Game()
 	initWindow();
 	initPlayer();
 	initFruits();
+	initTail();
+	initGUI();
+	initSystems();
 }
 
 Game::~Game()
@@ -79,6 +99,15 @@ void Game::updatePollEvents()
 			window->close();
 		}
 	}
+}
+
+void Game::updateGUI()
+{
+	std::stringstream ss;
+
+	ss << "Points: " << points;
+
+	pointText.setString(ss.str());
 }
 
 void Game::updatePlayerWindowCollision()
@@ -175,7 +204,6 @@ void Game::updateTail()
 					   player->getPos().x,
 					   player->getPos().y));
 
-		std::cout << "tail.size(): " << tail.size() << "\n";
 		spawn_tail = false;
 	}
 
@@ -213,6 +241,8 @@ void Game::update()
 {
 	updatePollEvents();
 
+	updateGUI();
+
 	updatePlayerWindowCollision();
 
 	updateDirection();
@@ -224,6 +254,11 @@ void Game::update()
 	updateFruits();
 
 	updateTail();
+}
+
+void Game::renderGUI()
+{
+	window->draw(pointText);
 }
 
 void Game::render()
@@ -245,6 +280,8 @@ void Game::render()
 			t->render(*window);
 		}
 	}
+
+	renderGUI();
 
 	window->display();
 }

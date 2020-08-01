@@ -7,7 +7,9 @@
 #include <vector>
 #include <deque>
 #include <iostream>
-#include<math.h>
+#include <math.h>
+#include <string>
+#include <sstream>
 
 class Game
 {
@@ -17,6 +19,10 @@ class Game
 
 	enum direction {UP, DOWN, LEFT, RIGHT};
 	direction dir;
+
+	// GUI
+	Font font;
+	Text pointText;
 
 	// systems
 	int points;
@@ -38,6 +44,7 @@ class Game
 	void initPlayer();
 	void initFruits();
 	void initTail();
+	void initGUI();
 	void initSystems();
 
 public:
@@ -48,15 +55,17 @@ public:
 	void run();
 
 	void updatePollEvents();
+	void updateGUI();
 	void updatePlayerWindowCollision();
 	void updateDirection();
 	void updateInput();
 	void updateFruits();
 	void updateTail();
-
 	void updateEatFruits();
 
 	void update();
+
+	void renderGUI();
 	void render();
 };
 
