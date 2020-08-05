@@ -82,7 +82,13 @@ void Game::run()
 {
 	while (window->isOpen())
 	{
-		update();
+		updatePollEvents();
+
+		if (!endGame)
+		{
+			update();
+		}
+
 		render();
 	}
 }
@@ -114,7 +120,18 @@ void Game::updateGUI()
 
 void Game::updatePlayerTailCollision()
 {
-	//if ()
+	for (int i = 1; i < tail.size(); i++)
+	{
+		if (player->getBounds().intersects(tail[i]->getBounds()))
+		{
+			endGame = true;
+		}
+
+		else
+		{
+			endGame = false;
+		}
+	}
 }
 
 void Game::updatePlayerWindowCollision()
@@ -246,20 +263,13 @@ void Game::updateEatFruits()
 
 void Game::update()
 {
-	updatePollEvents();
-
 	updateGUI();
-
+	updatePlayerTailCollision();
 	updatePlayerWindowCollision();
-
 	updateDirection();
-
 	updateInput();
-
 	updateEatFruits();
-
 	updateFruits();
-
 	updateTail();
 }
 
