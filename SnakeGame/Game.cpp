@@ -41,6 +41,15 @@ void Game::initGUI()
 	pointText.setCharacterSize(30);
 	pointText.setFillColor(Color::White);
 	pointText.setString("test");
+
+	// init game over text
+	gameOverText.setFont(font);
+	gameOverText.setCharacterSize(60);
+	gameOverText.setFillColor(Color::Red);
+	gameOverText.setString("Game Over!");
+	gameOverText.setPosition(
+		window->getSize().x / 2.f - gameOverText.getGlobalBounds().width / 2.f,
+		window->getSize().y / 2.f - gameOverText.getGlobalBounds().height / 2.f);
 }
 
 void Game::initSystems()
@@ -299,6 +308,11 @@ void Game::render()
 	}
 
 	renderGUI();
+
+	if (endGame)
+	{
+		window->draw(gameOverText);
+	}
 
 	window->display();
 }

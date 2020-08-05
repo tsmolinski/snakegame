@@ -24,6 +24,8 @@ class Game
 	Font font;
 	Text pointText;
 
+	Text gameOverText;
+
 
 	// systems
 	int points;
