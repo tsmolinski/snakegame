@@ -20,6 +20,7 @@ public:
 	virtual ~Tail();
 
 	// accessors
+	const FloatRect getBounds() const;
 	Vector2f getPos();
 	void setPos(float pos_x, float pos_y);
 

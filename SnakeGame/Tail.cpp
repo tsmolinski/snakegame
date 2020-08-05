@@ -21,6 +21,11 @@ Tail::~Tail()
 {
 }
 
+const FloatRect Tail::getBounds() const
+{
+	return shape.getGlobalBounds();
+}
+
 Vector2f Tail::getPos()
 {
 	return shape.getPosition();

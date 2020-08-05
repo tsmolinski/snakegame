@@ -46,6 +46,8 @@ void Game::initGUI()
 void Game::initSystems()
 {
 	points = 0;
+
+	endGame = false;
 }
 
 // constructor/destructor
@@ -110,6 +112,11 @@ void Game::updateGUI()
 	pointText.setString(ss.str());
 }
 
+void Game::updatePlayerTailCollision()
+{
+	//if ()
+}
+
 void Game::updatePlayerWindowCollision()
 {
 	// top and bottom
@@ -158,22 +165,22 @@ void Game::updateInput()
 	// move player
 	bool keep_moving = false;
 
-		if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left) && dir != RIGHT)
+		if ((Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left)) && dir != RIGHT)
 		{
 			dir = LEFT;
 		}
 
-		else if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right) && dir != LEFT)
+		else if ((Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right)) && dir != LEFT)
 		{
 			dir = RIGHT;
 		}
 
-		else if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Up) && dir != DOWN)
+		else if ((Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Up)) && dir != DOWN)
 		{
 			dir = UP;
 		}
 
-		else if (Keyboard::isKeyPressed(Keyboard::S) || Keyboard::isKeyPressed(Keyboard::Down) && dir != UP)
+		else if ((Keyboard::isKeyPressed(Keyboard::S) || Keyboard::isKeyPressed(Keyboard::Down)) && dir != UP)
 		{
 			dir = DOWN;
 		}

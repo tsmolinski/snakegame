@@ -24,8 +24,11 @@ class Game
 	Font font;
 	Text pointText;
 
+
 	// systems
 	int points;
+	
+	bool endGame;
 	
 	// player - snake
 	Player* player;
@@ -56,6 +59,7 @@ public:
 
 	void updatePollEvents();
 	void updateGUI();
+	void updatePlayerTailCollision();
 	void updatePlayerWindowCollision();
 	void updateDirection();
 	void updateInput();
